@@ -18,11 +18,13 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+      - name: Display Cache Key
+        run: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Cache
         uses: actions/cache@v4.3.0
         with:
           path: "${{ github.workspace }}/.m2/repository"
-          key: hashFiles('**/pom.xml')
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Build project with Maven
         run: mvn clean package -DskipTests
       - name: Upload a Build Artifact
@@ -42,11 +44,13 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+      - name: Display Cache Key
+        run: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Cache
         uses: actions/cache@v4.3.0
         with:
           path: "${{ github.workspace }}/.m2/repository"
-          key: hashFiles('**/pom.xml')
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Test project with Maven
         run: mvn test
         continue-on-error: true
