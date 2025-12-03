@@ -19,7 +19,7 @@ jobs:
           java-version: 17
           distribution: temurin
       - name: Display Cache Key
-        run: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        run: echo ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Cache
         uses: actions/cache@v4.3.0
         with:
@@ -45,7 +45,7 @@ jobs:
           java-version: 17
           distribution: temurin
       - name: Display Cache Key
-        run: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        run: echo ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
       - name: Cache
         uses: actions/cache@v4.3.0
         with:
